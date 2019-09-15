@@ -3,10 +3,10 @@
 all: psshcmd
 
 psshcmd: psshcmd.cr
-	crystal build psshcmd.cr
+	crystal build -Dpreview_mt psshcmd.cr
 
 release:
-	crystal build psshcmd.cr --release
+	crystal build -Dpreview_mt psshcmd.cr --release
 
 repl:
 	PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig crystal play
