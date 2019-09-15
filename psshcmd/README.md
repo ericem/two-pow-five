@@ -61,7 +61,7 @@ Public Key Authentication:
 ```
 export SSH_USER=testuser
 export SSH_PRIVKEY=$HOME/.ssh/id_rsa
-export SSH_PRIVKEY=$HOME/.ssh/id_rsa.pub
+export SSH_PUBKEY=$HOME/.ssh/id_rsa.pub
 ```
 
 If your private key has passphrase:
@@ -77,4 +77,19 @@ cat hosts.txt | psshcmd false
 cat hosts.txt | psshcmd true
 cat hosts.txt | psshcmd exit 15
 cat hosts.txt | psshcmd sudo chef-client
+```
+
+Expected Output:
+
+```
+host1.example.com 0
+host2.example.com 0
+host1.example.com 1
+host2.example.com 1
+host1.example.com 0
+host2.example.com 0
+host1.example.com 15
+host2.example.com 15
+host1.example.com 213
+host2.example.com 213
 ```
