@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# cerner_2^5_2019
+
+files=$(git diff --staged --name-only)
+
+gitroot=$(git rev-parse --show-toplevel)
+
+cd $gitroot
+
+if [[ $files =~ .rb|.erb ]]; then
+  if [ git ls-files | grep -q Rakefile ]; then
+    if [ which bundle ]; then
+      bundle exec rake
+    else
+      rake
+    fi
+  fi
+fi
+
+if [ $? -eq 0 ]; then
+  message=success
+else
+  message=failure
+fi
+
+# Send message to M$ Flow URL to trigger a notification
+curl -H 'Accept: application/json' \
+        -H 'Content-Type: application/json' \
+        -d "{\"message\": \"$message\"}" \
+        $LASTCHECK_URL
