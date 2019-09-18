@@ -1,13 +1,14 @@
 # cerner_2^5_2019
 require "socket"
-stats = Channel(NamedTuple(stat: String, value: Int32)).new
+#stats = Channel(NamedTuple(stat: String, value: Int32)).new
+stats = Channel(String).new
 udp = UDPSocket.new(Socket::Family::INET)
 udp.multicast_hops = 1
 addr = Socket::IPAddress.new("224.0.9.9", 22499)
 spawn do
   loop do
     stat = stats.receive
-    udp.send(stat.to_s, addr)
+    udp.send(stat, addr)
   end
 end
 spawn do
@@ -19,10 +20,10 @@ spawn do
     end
     p = lines[0].split(" ")
     l = lines[3].split(" ")
-    stats.send({stat: "processes_total", value: p[1].to_i})
-    stats.send({stat: "processes_running", value: p[3].to_i})
-    stats.send({stat: "cpu_user", value: l[2].chomp("%").to_f.to_i})
-    stats.send({stat: "cpu_sys", value: l[4].chomp("%").to_f.to_i})
+    stats.send("processes_total #{p[1]}")
+    stats.send("processes_running #{p[3]}")
+    stats.send("cpu_user #{l[2].chomp("%")}")
+    stats.send("cpu_sys #{l[4].chomp("%")}")
     sleep 10
   end
 end
