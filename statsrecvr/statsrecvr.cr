@@ -11,8 +11,8 @@ spawn do
     puts "#{Time.utc(t.year,t.month,t.day,t.hour,t.minute,t.second).to_rfc3339} #{client_addr.address} #{message}"
   end
 end
-sleep
 Signal::INT.trap do
   udp.leave_group(addr)
   udp.close
 end
+sleep

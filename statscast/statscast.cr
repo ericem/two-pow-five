@@ -1,6 +1,5 @@
 # cerner_2^5_2019
 require "socket"
-#stats = Channel(NamedTuple(stat: String, value: Int32)).new
 stats = Channel(String).new
 udp = UDPSocket.new(Socket::Family::INET)
 udp.multicast_hops = 1
@@ -27,7 +26,7 @@ spawn do
     sleep 10
   end
 end
-sleep
 Signal::INT.trap do
   udp.close
 end
+sleep
