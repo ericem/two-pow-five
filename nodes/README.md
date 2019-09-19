@@ -93,3 +93,21 @@ Use curl to check the webserver service is available:
 ```
 nodes staging webserver | xargs curl -s -o /dev/null --connect-timeout 5 {} && echo "{} available" || echo "{} down"
 ```
+
+## Force a Cache Refresh
+
+By default nodes will cache the results for 1 hour. If you want to force nodes to refresh the data, use the 'REFRESH' environment variable:
+
+```
+REFRESH=true nodes staging webserver
+```
+
+## Delete the Cache
+
+All of the cache files are stored in the following locaion:
+
+```
+$HOME/.cache/nodes/<tag1>/<tag2>.txt
+```
+
+Just delete the files or directories to clean things up when you are done.
