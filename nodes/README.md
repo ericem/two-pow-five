@@ -82,7 +82,27 @@ Ping all the webservers to see if they are up:
 nodes staging webserver | fping
 ```
 
-Note: If you don't have fping installed, you can get it from Homebrew. It's a wicked fast version of fping, designed for automation.
+Expected Output
+
+```
+www1.example.com is alive
+www2.example.com is alive
+www3.example.com is alive
+```
+
+Create a handy alias:
+
+```
+alias webservers-up='nodes staging webserver | fping'
+```
+
+Now when you want a a quick check of your webservers:
+
+```
+webservers-up
+```
+
+Note: If you don't have fping installed, you can get it from Homebrew. It's a wicked fast version of ping, designed for automation.
 
 ```
 brew install fping
@@ -91,7 +111,26 @@ brew install fping
 Use curl to check the webserver service is available:
 
 ```
-nodes staging webserver | xargs curl -s -o /dev/null --connect-timeout 5 {} && echo "{} available" || echo "{} down"
+nodes staging webserver | xargs -n 1 -I {} sh -c "curl -Ls -o /dev/null --connect-timeout 1 {} &>/dev/null && echo '{} available' || echo '{} down'"
+```
+Expected Output
+
+```
+www1.example.com available
+www1.example.com down
+www1.example.com available
+```
+
+Put a function in your $HOME/.bashrc:
+
+```
+webservers-health() {
+  red='\e[0;31m'
+  green='\e[0;32m'
+  normal='\033[0m'
+  nodes staging webserver | xargs -n 1 -I {} sh -c "curl -Ls -o /dev/null --connect-timeout 1 {} &>/dev/null && echo \"{} ${green}available${normal}\" || echo \"{} ${red}down${normal}\""
+}
+
 ```
 
 ## Force a Cache Refresh
