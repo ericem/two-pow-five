@@ -1,0 +1,9 @@
+name: jumpauth
+version: 0.1.0
+authors:
+  - Eric Miller <eric@tallprairie.com>
+license: MIT
+dependencies:
+  redis:
+    github: stefanwille/crystal-redis
+    version: ~> 2.3.0
