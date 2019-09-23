@@ -44,3 +44,6 @@ As I am new to Ruby, coming to the devops space from a background in Python, I f
 ### SSH Jump Box Authentication Server (jumpauth)
 
 ### Linux Kernel Logging to Web Console (webcon)
+
+### Track a Streak of Anything (streak)
+
