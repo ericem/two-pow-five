@@ -59,7 +59,13 @@ mark-streak-done() {
   date -R >> $HOME/.local/log/streaks.log
 ```
 
-I'm going to use this to track my streak of 2^5 submissions. To automate this tracking, I've created a git hook:
+Then to mark a streak in the log:
+```
+mark-streak-done
+```
+
+### Update Streaks with Git Hook
+I'm going to use streak to track my streak of 2^5 submissions. To automate this tracking, I've created a git pre-push hook:
 
 .git/hooks/pre-push:
 ```
@@ -72,9 +78,22 @@ Now, everytime that I push to my two-pow-five repository, it will update my stre
 
 ### Displaying Streaks Calendar
 
-To to display the current month and streaks:
+To display the current month and streaks:
 
 ```
 streak
 ```
+Expected output:
+
+```
+   September 2019
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+```
+
 The days with a streak marked in the log file will be highlighted in green. Now keep that 2^5 streak going!
+
