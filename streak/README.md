@@ -66,17 +66,15 @@ I'm going to use this to track my streak of 2^5 submissions. To automate this tr
 [ -d $HOME/.local/log ] || mkdir -p $HOME/.local/log
 date -R >> $HOME/.local/log/streaks.log
 exit 0
-
 ```
+
 Now, everytime that I push to my two-pow-five repository, it will update my streaks log. It does not hurt anything to have multiple entries on the same day in the streaks log. 
 
 ### Displaying Streaks Calendar
-
-```
 
 To to display the current month and streaks:
 
 ```
 streak
 ```
-
+The days with a streak marked in the log file will be highlighted in green. Now keep that 2^5 streak going!
