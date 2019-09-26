@@ -47,3 +47,8 @@ As I am new to Ruby, coming to the devops space from a background in Python, I f
 
 ### Track a Streak of Anything (streak)
 
+### Time Left for Getting Things Done (timeleft)
+
+### A Secret Store using MacOS Keychain (secret)
+
+### Battery Status for the Terminal (battstat)
