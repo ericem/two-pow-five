@@ -34,6 +34,7 @@ release/${TARBALL}: ${APP}
 	mkdir -p release
 	rm -rf ${RELEASE_DIR} && mkdir ${RELEASE_DIR}
 	cp Makefile ${RELEASE_DIR}/
+	cp README.md ${RELEASE_DIR}
 	cp ${APP}.cr ${RELEASE_DIR}
 	tar czvf ${TARBALL} ${RELEASE_DIR}
 	rm -rf ${RELEASE_DIR}
@@ -41,16 +42,20 @@ release/${TARBALL}: ${APP}
 
 release/${BOTTLE}: RELEASE_FLAG := --release
 release/${BOTTLE}: ${APP}
+	rm -rf build
+	mkdir -p build/${APP}/${VERSION}/bin
+	cp README.md build/${APP}/${VERSION}/
+	cp ${APP} build/${APP}/${VERSION}/bin
+	cp ../LICENSE build/${APP}/${VERSION}/
+	cd build && \
+		tar czvf ${BOTTLE} ${APP}
 	mkdir -p release
-	rm -rf ${RELEASE_DIR} && mkdir ${RELEASE_DIR} && cd ${RELEASE_DIR}
-	tar czvf ${BOTTLE} ${APP}
-	rm -rf ${RELEASE_DIR}
-	mv ${BOTTLE} release/
+	mv build/${BOTTLE} release/
+	rm -rf build
 
+tarball: release/${TARBALL}
 
-tarball: ${TARBALL}
-
-bottle: ${BOTTLE}
+bottle: release/${BOTTLE}
 
 clean:
 	rm ${APP}
