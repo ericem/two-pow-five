@@ -19,7 +19,9 @@ release: release/${TARBALL}.sha256 release/${BOTTLE}.sha256
 
 install: RELEASE_FLAG:=--release
 install: ${APP}
-	cp ./${APP} ${PREFIX}/bin/
+	test -d ${PREFIX}/bin || \
+		mkdir -p ${PREFIX}/bin && \
+		cp ./${APP} ${PREFIX}/bin
 
 release/${TARBALL}.sha256: release/${TARBALL}
 	cd release && \
@@ -44,9 +46,11 @@ release/${BOTTLE}: RELEASE_FLAG := --release
 release/${BOTTLE}: ${APP}
 	rm -rf build
 	mkdir -p build/${APP}/${VERSION}/bin
-	cp README.md build/${APP}/${VERSION}/
+	mkdir -p build/${APP}/${VERSION}/.brew
+	cp README.md build/${APP}/${VERSION}
 	cp ${APP} build/${APP}/${VERSION}/bin
-	cp ../LICENSE build/${APP}/${VERSION}/
+	cp ../LICENSE build/${APP}/${VERSION}
+	cp ../../homebrew-two-pow-five/Formula/${APP}.rb build/${APP}/${VERSION}/.brew
 	cd build && \
 		tar czvf ${BOTTLE} ${APP}
 	mkdir -p release
