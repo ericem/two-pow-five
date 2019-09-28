@@ -8,6 +8,7 @@ RELEASE_FLAG :=
 RELEASE_DIR = ${APP}-${VERSION}
 TARBALL = ${APP}-${VERSION}.tar.gz
 BOTTLE = ${APP}-${VERSION}.${MACOSVER}.bottle.tar.gz
+PREFIX ?= /usr/local
 
 all: ${APP}
 
@@ -16,8 +17,9 @@ ${APP}: ${APP}.cr
 
 release: release/${TARBALL}.sha256 release/${BOTTLE}.sha256
 
-install:
-	cp ./${APP} /usr/local/bin/
+install: RELEASE_FLAG:=--release
+install: ${APP}
+	cp ./${APP} ${PREFIX}/bin/
 
 release/${TARBALL}.sha256: release/${TARBALL}
 	cd release && \
