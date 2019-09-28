@@ -52,5 +52,6 @@ As I am new to Ruby, coming to the devops space from a background in Python, I f
 
 ### 13. Battery Status for the Terminal (battstat)
 
-### 14 TMUX Pane Stats (panestats)
+### 14. TMUX Pane Stats (panestats)
 
+### 15. URL Status Monitor (urlstatus)

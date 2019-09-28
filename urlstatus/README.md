@@ -55,9 +55,21 @@ Output Fields:
 TIMESTAMP CURL_EXIT_CODE STATUS_MSG HTTP_CODE TIME_NAMELOOKUP TIME_CONNECT TIME_APPCONNECT TIME_TOTAL
 ```
 
-TIMESTAMP - RFC 3339 formatted timestamp when request is made
-CURL_EXIT_CODE - The exit code of the curl process `man curl` for a complete listing of possible values
+TIMESTAMP - RFC 3339 formatted timestamp when request is made.
+
+CURL_EXIT_CODE - The exit code of the curl process. See `man curl` for a complete listing of possible values.
+
 STATUS_MSG - Basic status of the request (success|error|fail). The value 'success' indicates that an HTTP connection was made and the server returned an HTTP code that was either a 1XX, 2XX, or 3XX. The value 'error' indicates that an HTTP connection was made but the server returned an error code either 4XX or 5XX. The value 'fail' indicates that the connection failed. Check the curl exit code for more details.
+
+HTTP_CODE - The HTTP code returned by the server.
+
+TIME_NAMELOOKUP - The amount of time to perform a DNS query for the server.
+
+TIME_CONNECT - The amount of time to complete the TCP connection to the server.
+
+TIME_APPCONNECT - The amount of time to complete the SSL handshake with the server.
+
+TIME_TOTAL - The total amount of time the request took.
 
 Example Output:
 ```
