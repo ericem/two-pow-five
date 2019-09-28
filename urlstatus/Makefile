@@ -14,11 +14,18 @@ all: ${APP}
 ${APP}: ${APP}.cr
 	crystal build ${APP}.cr ${RELEASE_FLAG}
 
-release: RELEASE_FLAG = --release
-release: clean ${APP} release/${TARBALL} release/${BOTTLE}
+release: release/${TARBALL}.sha256 release/${BOTTLE}.sha256
 
 install:
 	cp ./${APP} /usr/local/bin/
+
+release/${TARBALL}.sha256: release/${TARBALL}
+	cd release && \
+		sha256sum ${TARBALL} > ${TARBALL}.sha256
+
+release/${BOTTLE}.sha256: release/${BOTTLE}
+	cd release && \
+		sha256sum ${BOTTLE} > ${BOTTLE}.sha256
 
 release/${TARBALL}: RELEASE_FLAG := --release
 release/${TARBALL}: ${APP}
@@ -37,6 +44,7 @@ release/${BOTTLE}: ${APP}
 	tar czvf ${BOTTLE} ${APP}
 	rm -rf ${RELEASE_DIR}
 	mv ${BOTTLE} release/
+
 
 tarball: ${TARBALL}
 
