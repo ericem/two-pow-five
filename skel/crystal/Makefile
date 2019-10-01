@@ -49,11 +49,9 @@ release/${BOTTLE}: RELEASE_FLAG := --release
 release/${BOTTLE}: ${APP}
 	rm -rf build
 	mkdir -p build/${APP}/${VERSION}/bin
-	mkdir -p build/${APP}/${VERSION}/.brew
 	cp README.md build/${APP}/${VERSION}
 	cp ${APP} build/${APP}/${VERSION}/bin
 	cp ../LICENSE build/${APP}/${VERSION}
-	cp ${FORMULA_DIR}/${FORMULA} build/${APP}/${VERSION}/.brew
 	cd build && \
 		tar czvf ${BOTTLE} ${APP}
 	mkdir -p release
