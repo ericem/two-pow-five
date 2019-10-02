@@ -21,7 +21,14 @@ Install the compiler:
 brew install crystal
 ```
 
+Install crystal library dependencies:
+
+```
+shards install
+```
+
 ### Compiling
+
 
 To build a debug version:
 

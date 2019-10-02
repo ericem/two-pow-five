@@ -16,6 +16,7 @@ PREFIX ?= /usr/local
 all: ${APP}
 
 ${APP}: ${APP}.cr
+	shards install
 	crystal build ${APP}.cr ${RELEASE_FLAG}
 
 release: release/${TARBALL}.sha256 release/${BOTTLE}.sha256
