@@ -55,3 +55,9 @@ As I am new to Ruby, coming to the devops space from a background in Python, I f
 ### 14. TMUX Pane Stats (panestats)
 
 ### 15. URL Status Monitor (urlstatus)
+
+### 16. Certificate Dumper (certdump)
+
+### 17. Certificate Verifier (certverify)
+
+### 18. Certificate Information (certinfo)

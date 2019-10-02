@@ -3,10 +3,9 @@ import osproc
 import re
 import strutils
 import strformat
-let (battery, error) = execCmdEx("pmset -g batt")
+let (battery, _) = execCmdEx("pmset -g batt")
 var on_battery = contains(battery, re"Battery Power")
 var on_ac = contains(battery, re"AC Power")
-var discharging = contains(battery, re"discharging")
 var level_percent = findall(battery, re"(\d+)%")
 var level = parseInt(strip(level_percent[0], chars = {'%'}))
 if on_battery:
@@ -26,6 +25,10 @@ if on_battery:
     echo fmt" {level}%"
   elif level <= 80:
     echo fmt" {level}%"
+  elif level <= 90:
+    echo fmt" {level}%"
+  else:
+    echo fmt" {level}%"
 elif on_ac:
     echo fmt" {level}%"
 else:

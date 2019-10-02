@@ -6,8 +6,11 @@ MACOSVER := mojave
 
 RELEASE_FLAG :=
 RELEASE_DIR = ${APP}-${VERSION}
+FORMULA_DIR = ../../homebrew-two-pow-five
 TARBALL = ${APP}-${VERSION}.tar.gz
 BOTTLE = ${APP}-${VERSION}.${MACOSVER}.bottle.tar.gz
+FORMULA = ${APP}.rb
+
 PREFIX ?= /usr/local
 
 all: ${APP}
@@ -50,7 +53,7 @@ release/${BOTTLE}: ${APP}
 	cp README.md build/${APP}/${VERSION}
 	cp ${APP} build/${APP}/${VERSION}/bin
 	cp ../LICENSE build/${APP}/${VERSION}
-	cp ../../homebrew-two-pow-five/Formula/${APP}.rb build/${APP}/${VERSION}/.brew
+	cp ${FORMULA_DIR}/${FORMULA} build/${APP}/${VERSION}/.brew
 	cd build && \
 		tar czvf ${BOTTLE} ${APP}
 	mkdir -p release
