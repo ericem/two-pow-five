@@ -1,6 +1,6 @@
 .PHONY: all release tarball bottle clean install
 
-APP := serveme
+APP := certgen
 VERSION := 0.1.0
 MACOSVER := mojave
 
@@ -16,8 +16,7 @@ PREFIX ?= /usr/local
 all: ${APP}
 
 ${APP}: ${APP}.cr
-	shards install
-	PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig crystal build ${APP}.cr ${RELEASE_FLAG}
+	crystal build ${APP}.cr ${RELEASE_FLAG}
 
 release: release/${TARBALL}.sha256 release/${BOTTLE}.sha256
 

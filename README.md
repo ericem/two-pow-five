@@ -61,3 +61,5 @@ As I am new to Ruby, coming to the devops space from a background in Python, I f
 ### 17. Certificate Verifier (certverify)
 
 ### 18. Certificate Information (certinfo)
+
+### 19. Super Simple Static File Server (serveme)
