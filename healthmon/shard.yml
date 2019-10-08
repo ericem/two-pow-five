@@ -1,0 +1,19 @@
+name: healthmon
+version: 0.1.0
+
+authors:
+  - Eric Miller <eric@tallprairie.com>
+
+targets:
+  healthmon:
+    main: healthmon.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  kemal-basic-auth:
+    github: kemalcr/kemal-basic-auth
+
+crystal: 0.31.0
+
+license: MIT
