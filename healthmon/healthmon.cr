@@ -18,8 +18,9 @@ get "/:pid" do |env|
   ps = `ps -o pid= -p #{pid}`
   if $?.success?
     start, stats = `ps -o lstart= -p #{pid}`, `ps -o %cpu=,%mem=,rss=,state= -p #{pid}`.split()
+    start_rfc3339 = Time.parse_local(start, "%a %b %e %H:%M:%S %Y").to_rfc3339
     uptime = Time.local - Time.parse_local(start, "%a %b %e %H:%M:%S %Y")
-    {"pid" => "#{pid}", "uptime" => "#{uptime.days}d #{uptime.hours}h #{uptime.minutes}m #{uptime.seconds}s", "cpu_pct" => stats[0].to_f, "mem_pct" => stats[1].to_f, "mem_kbytes" => stats[2].to_f}.to_json
+    {"pid" => pid.to_i, "start" => start_rfc3339, "uptime" => "#{uptime.days}d#{uptime.hours}h#{uptime.minutes}m#{uptime.seconds}s", "cpu_pct" => stats[0].to_f, "mem_pct" => stats[1].to_f, "mem_kbytes" => stats[2].to_i}.to_json
   else
     error = {"error" => "Process not found (#{pid})"}.to_json
     halt env, status_code: 404, response: error

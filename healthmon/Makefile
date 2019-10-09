@@ -1,7 +1,7 @@
 .PHONY: all release tarball bottle clean install
 
 APP := healthmon
-VERSION := 0.1.0
+VERSION := 0.2.0
 MACOSVER := mojave
 
 RELEASE_FLAG :=
