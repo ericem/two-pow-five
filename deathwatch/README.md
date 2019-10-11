@@ -31,6 +31,11 @@ shards install
 
 ### Compiling
 
+Download ebpf utility:
+```
+make download
+```
+
 To build a debug version:
 
 ```
