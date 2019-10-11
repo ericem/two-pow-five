@@ -1,0 +1,17 @@
+name: deathwatch
+version: 0.1.0
+
+authors:
+  - Eric Miller <eric@tallprairie.com>
+
+targets:
+  serveme:
+    main: deathwatch.cr
+
+dependencies:
+  baked_file_system:
+    github: schovi/baked_file_system
+
+crystal: 0.31.1
+
+license: MIT
