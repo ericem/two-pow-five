@@ -1,0 +1,2 @@
+image: "crystallang/crystal"
+command: "/bin/sh"
