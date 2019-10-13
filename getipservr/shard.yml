@@ -1,0 +1,21 @@
+name: getipservr
+version: 0.1.0
+
+authors:
+  - Eric Miller <eric@tallprairie.com>
+
+targets:
+  getipservr:
+    main: getipservr.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  kemal-basic-auth:
+    github: kemalcr/kemal-basic-auth
+  crotp:
+    github: philnash/crotp
+
+crystal: 0.31.1
+
+license: MIT
