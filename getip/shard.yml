@@ -1,0 +1,17 @@
+name: getip
+version: 0.1.0
+
+authors:
+  - Eric Miller <eric@tallprairie.com>
+
+targets:
+  getip:
+    main: getip.cr
+
+dependencies:
+  crotp:
+    github: philnash/crotp
+
+crystal: 0.31.1
+
+license: MIT
