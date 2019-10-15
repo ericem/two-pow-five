@@ -7,7 +7,7 @@ struct Stat
   def initialize(@pid : Int32, @start : String, @uptime : String, @cpu_pct : Float64, @mem_pct : Float64, @mem_kbytes : Int32)
   end
 end
-stats, healthurl, sleep_sec, alert, bell = Channel(Stat).new, ARGV[0], ENV.fetch("SLEEP", "60").to_i, ENV.fetch("ALERT", nil), "\a"
+stats, healthurl, sleep_sec, alert, bell, header = Channel(Stat).new, ARGV[0], ENV.fetch("SLEEP", "60").to_i, ENV.fetch("ALERT", nil), "\a", ENV.fetch("HEADER", nil)
 spawn do
   loop do
     response = HTTP::Client.get "#{healthurl}"
@@ -22,6 +22,8 @@ spawn do
   end
 end
 spawn do
+  puts "#Time PID Start Uptime CPU_pct Mem_pct Mem_kbytes" if header
+  STDOUT.flush
   loop do
     stat = stats.receive
     now = Time.local(Time.local.year, Time.local.month, Time.local.day, Time.local.hour, Time.local.minute, Time.local.second)
