@@ -5,7 +5,7 @@ if ! File.exists?(cert)
   cert = host
 end
 openssl = "/usr/local/opt/openssl@1.1/bin/openssl"
-text = `#{openssl} x509 -in #{cert} -text -certopt ext_error,no_sigdump,no_pubkey -noout`
+text = `#{openssl} x509 -in #{cert} -text -certopt ext_error -noout`
 if $?.success?
   puts text
 else

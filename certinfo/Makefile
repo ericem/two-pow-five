@@ -1,7 +1,7 @@
 .PHONY: all release tarball bottle clean install
 
 APP := certinfo
-VERSION := 0.1.0
+VERSION := 0.1.1
 MACOSVER := mojave
 
 RELEASE_FLAG :=
