@@ -23,7 +23,7 @@ while true
     http_code = p[0][4]
     if http_code.is_a?(Int32)
       if http_code >= 400 && http_code <= 500
-        puts "#{now.to_rfc3339} #{$?.exit_code} #{"error".colorize(:cyan).toggle(true)} #{p[0][4].colorize(:cyan).toggle(true)} #{p[0][0]} #{p[0][2]} #{p[0][2]} #{p[0][3]}"
+        puts "#{now.to_rfc3339} #{$?.exit_code} #{"error".colorize(:cyan).toggle(true)} #{p[0][4].colorize(:cyan).toggle(true)} #{p[0][0]} #{p[0][1]} #{p[0][2]} #{p[0][3]}"
       else
         STDOUT.puts "#{now.to_rfc3339} #{$?.exit_code} #{"success".colorize(:green).toggle(true)} #{p[0][4].colorize(:green).toggle(true)} #{p[0][0]} #{p[0][1]} #{p[0][2]} #{p[0][3]}"
       end

@@ -1,7 +1,7 @@
 .PHONY: all release tarball bottle clean install
 
 APP := urlstatus
-VERSION := 0.1.0
+VERSION := 0.1.1
 MACOSVER := mojave
 
 RELEASE_FLAG :=
@@ -53,7 +53,6 @@ release/${BOTTLE}: ${APP}
 	cp README.md build/${APP}/${VERSION}
 	cp ${APP} build/${APP}/${VERSION}/bin
 	cp ../LICENSE build/${APP}/${VERSION}
-	cp ${FORMULA_DIR}/${FORMULA} build/${APP}/${VERSION}/.brew
 	cd build && \
 		tar czvf ${BOTTLE} ${APP}
 	mkdir -p release
