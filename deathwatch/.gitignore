@@ -2,3 +2,5 @@
 lib/
 deathwatch
 bakedfs
+.vagrant
+shard.lock
