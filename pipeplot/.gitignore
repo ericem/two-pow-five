@@ -1,3 +1,4 @@
 *.dwarf
 lib/
 pipeplot
+.vagrant
