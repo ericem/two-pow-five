@@ -23,9 +23,7 @@ It should be pretty obvious, but unless it is not clear, let me state it in plai
 
 ## The Entries
 
-I work on a 'big data' operations team, therefore I have focused my entries for the 2^5 competition on applications and utilities that increase the productivity of a system engineer working in a similiar environment. For these first set of entries, I chose to use a language called Crystal. When I started working on 2^5, I selected Crystal as my primary language because I am learning Ruby, a language used heavily in configuration management, and wanted to continue honing those skills. However, as it turns out, Crystal stands on its own merits as a fantastic language for devops development and has become my secret weapon for building compact yet functional apps in a mere 32 lines of code. The tag line for Crystal is "Slick as Ruby, Fast as C." It has the same terse, easy to read syntax as Ruby, but is statically type checked and compiles to a single native binary for easy deployment. All great qualities for quickly building tools to improve engineering productivity.
-
-
+I work on a 'big data' operations team, therefore I have focused my entries for the 2^5 competition on applications and utilities that increase the productivity of a system engineer working in a similar environment. For most entries, I used a language called Crystal which I have been wanting to learn for awhile. It is similar to Ruby (which I am learning for work), so I thought it would help me to continue honing those skills. However, as it turns out, Crystal stands on its own merits as a fantastic language for devops development and has become my secret weapon for building compact, yet functional apps in a mere 32 lines of code. The tag line for Crystal is "Slick as Ruby, Fast as C." It has the same terse, easy to read syntax as Ruby, but is statically type checked and compiles to a single native binary for easy deployment. All great qualities for quickly building tools to improve engineering productivity.
 
 
 ### 1. Stack Overflow Trace (sotrace)
